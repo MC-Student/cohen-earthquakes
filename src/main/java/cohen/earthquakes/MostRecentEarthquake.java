@@ -13,18 +13,9 @@ public class MostRecentEarthquake
 {
     private final Feature mostRecent;
 
-    public MostRecentEarthquake() throws IOException
+    public MostRecentEarthquake(Feature mostRecent) throws IOException
     {
-        //URL url = new URL("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson");
-        URL url = new URL("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson");
-        URLConnection urlConnection = url.openConnection();
-        InputStream inStream = urlConnection.getInputStream();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
-
-        Gson gson = new Gson();
-        FeatureCollection featureCollection = gson.fromJson(reader, FeatureCollection.class);
-        System.out.println(featureCollection.features[0].properties.place);
-        mostRecent = featureCollection.features[0];
+        this.mostRecent = mostRecent;
     }
 
     public String recentGetPlace()
